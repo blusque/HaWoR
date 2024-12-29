@@ -5,9 +5,9 @@ from torch import nn, Tensor
 from torch.nn import TransformerEncoder, TransformerEncoderLayer
 # from cmib.model.positional_encoding import PositionalEmbedding
 
-class VIMOPositionalEncoding(nn.Module):
+class SinPositionalEncoding(nn.Module):
     def __init__(self, d_model, dropout=0.1, max_len=100):
-        super(VIMOPositionalEncoding, self).__init__()
+        super(SinPositionalEncoding, self).__init__()
         self.dropout = nn.Dropout(p=dropout)
 
         pe = torch.zeros(max_len, d_model)
@@ -207,7 +207,7 @@ class TransformerModel(nn.Module):
         self.nhead = nhead
         self.d_hid = d_hid
         self.nlayers = nlayers
-        self.pos_embedding = VIMOPositionalEncoding(d_model=d_model, dropout=0.1, max_len=seq_len)
+        self.pos_embedding = SinPositionalEncoding(d_model=d_model, dropout=0.1, max_len=seq_len)
         if masked_attention_stage:
             self.input_layer = nn.Linear(input_dim+1, d_model)
             # visible to invisible attention
