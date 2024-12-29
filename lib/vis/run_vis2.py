@@ -209,17 +209,8 @@ def run_vis2_on_video_cam(res_dict, res_dict2, output_pth, focal_length, image_n
             [0, 0, 1]
         ]
     )
-    print(cols, rows)
-    if height != width:
-        if height < width:
-            vis_w = 540
-            vis_h = int(540 / width * height)
-        elif height > width:
-            vis_h = 540
-            vis_w = int(540 / height * width)
-    else:
-        vis_h = 540
-        vis_w = 540
+    vis_h = height
+    vis_w = width
 
     data = viewer_utils.ViewerData(Rt, K, cols, rows, imgnames=image_names)
     batch = (meshes, data)
