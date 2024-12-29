@@ -2,6 +2,7 @@ import sys
 import os
 
 from natsort import natsorted
+
 sys.path.insert(0, os.path.dirname(__file__) + '/../..')
 
 import argparse
@@ -14,6 +15,7 @@ from glob import glob
 from pycocotools import mask as masktool
 from lib.pipeline.masked_droid_slam import *
 from lib.pipeline.est_scale import *
+from hawor.utils.process import block_print, enable_print
 
 sys.path.insert(0, os.path.dirname(__file__) + '/../../thirdparty/Metric3D')
 from metric import Metric3D
@@ -55,7 +57,7 @@ def hawor_slam(args, start_idx, end_idx):
     first_img = cv2.imread(imgfiles[0])
     height, width, _ = first_img.shape
     
-    print(f'Running on {video_folder} ...')
+    print(f'Running slam on {video_folder} ...')
 
     ##### Run SLAM #####
     # Use Masking
@@ -90,8 +92,10 @@ def hawor_slam(args, start_idx, end_idx):
     del droid
     torch.cuda.empty_cache()
 
-    # Estimate scale    
+    # Estimate scale  
+    block_print()  
     metric = Metric3D('thirdparty/Metric3D/weights/metric_depth_vit_large_800k.pth') 
+    enable_print() 
     min_threshold = 0.4
     max_threshold = 0.7
 
@@ -122,6 +126,7 @@ def hawor_slam(args, start_idx, end_idx):
     print(f"estimated scale: {median_s}")
 
     # Save results
+    os.makedirs(f"{seq_folder}/SLAM", exist_ok=True)
     save_path = f'{seq_folder}/SLAM/hawor_slam_w_scale_{start_idx}_{end_idx}.npz'
     np.savez(save_path, 
             tstamp=tstamp, disps=disps, traj=traj, 

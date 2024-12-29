@@ -30,7 +30,7 @@ parser.add_argument("--calib", type=str, help="path to calibration file")
 parser.add_argument("--t0", default=0, type=int, help="starting frame")
 parser.add_argument("--stride", default=1, type=int, help="frame stride")
 
-parser.add_argument("--weights", default="weights/droid.pth")
+parser.add_argument("--weights", default="weights/external/droid.pth")
 parser.add_argument("--buffer", type=int, default=512)
 parser.add_argument("--image_size", default=[240, 320])
 parser.add_argument("--disable_vis", action="store_true")

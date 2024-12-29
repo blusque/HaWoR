@@ -20,7 +20,7 @@ else:
 
 def detect_track(imgfiles, thresh=0.5):
     
-    hand_det_model = YOLO('./weights/detector.pt')
+    hand_det_model = YOLO('./weights/external/detector.pt')
 
     # Run
     boxes_ = []

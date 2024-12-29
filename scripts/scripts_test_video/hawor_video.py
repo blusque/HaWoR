@@ -65,7 +65,7 @@ def hawor_motion_estimation(args, start_idx, end_idx, seq_folder):
     
     tid = np.array([tr for tr in tracks])
 
-    print(f'Running on {video} ...')
+    print(f'Running hawor on {video} ...')
 
     left_trk = []
     right_trk = []
