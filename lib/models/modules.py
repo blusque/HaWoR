@@ -1,17 +1,8 @@
 import numpy as np
 import einops
-from tqdm import tqdm
 import torch
 import torch.nn as nn
-from torch.utils.data import default_collate
-
-from lib.utils.geometry import perspective_projection
-from lib.utils.geometry import rot6d_to_rotmat_hmr2 as rot6d_to_rotmat
-from lib.datasets.track_dataset import TrackDataset
-
-from .backbones import create_backbone
 from .components.pose_transformer import TransformerDecoder
-from .mano_wrapper import MANO
 
 if torch.cuda.is_available():
     autocast = torch.cuda.amp.autocast
