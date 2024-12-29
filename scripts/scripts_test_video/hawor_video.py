@@ -211,9 +211,9 @@ def hawor_motion_estimation(args, start_idx, end_idx, seq_folder):
                 
     model_masks = model_masks > 0 # bool
     np.save(f'{seq_folder}/tracks_{start_idx}_{end_idx}/model_masks.npy', model_masks)
-    return final_tracks, frame_chunks_all, img_focal
+    return frame_chunks_all
 
-def hawor_infiller(args, start_idx, end_idx, img_focal, final_tracks, frame_chunks_all):
+def hawor_infiller(args, start_idx, end_idx, frame_chunks_all):
     # load infiller
     weight_path = args.infiller_weight
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')

@@ -1,17 +1,15 @@
-import cv2
 import einops
 import numpy as np
 import torch
 import pytorch_lightning as pl
-from typing import Any, Dict, Mapping, Tuple
+from typing import Dict
 from torchvision.utils import make_grid
 
 from tqdm import tqdm
 from yacs.config import CfgNode
 
-from lib.datasets.track_dataset import TrackDataset, TrackDatasetEval
+from lib.datasets.track_dataset import TrackDatasetEval
 from lib.models.modules import MANOTransformerDecoderHead, temporal_attention
-# from hawor.utils.losses import Keypoint2DLoss, Keypoint3DLoss, ParameterLoss
 from hawor.utils.pylogger import get_pylogger
 from hawor.utils.render_openpose import render_openpose
 from lib.utils.geometry import rot6d_to_rotmat_hmr2 as rot6d_to_rotmat
@@ -21,7 +19,6 @@ from torch.utils.data import default_collate
 
 from .backbones import create_backbone
 from .mano_wrapper import MANO
-# from thirdparty.hawor_package.hawor_package.utils.vis_tensor_cv2 import vis_tensor_cv2
 
 
 log = get_pylogger(__name__)

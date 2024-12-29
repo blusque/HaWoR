@@ -25,13 +25,13 @@ if __name__ == '__main__':
 
     start_idx, end_idx, seq_folder, imgfiles = detect_track_video(args)
 
-    final_tracks, frame_chunks_all, img_focal = hawor_motion_estimation(args, start_idx, end_idx, seq_folder)
+    frame_chunks_all = hawor_motion_estimation(args, start_idx, end_idx, seq_folder)
 
     hawor_slam(args, start_idx, end_idx)
     slam_path = os.path.join(seq_folder, f"SLAM/hawor_slam_w_scale_{start_idx}_{end_idx}.npz")
     R_w2c_sla_all, t_w2c_sla_all, R_c2w_sla_all, t_c2w_sla_all = load_slam_cam(slam_path)
 
-    pred_trans, pred_rot, pred_hand_pose, pred_betas, pred_valid = hawor_infiller(args, start_idx, end_idx, img_focal, final_tracks, frame_chunks_all)
+    pred_trans, pred_rot, pred_hand_pose, pred_betas, pred_valid = hawor_infiller(args, start_idx, end_idx, frame_chunks_all)
 
     # vis sequence for this video
     hand2idx = {
