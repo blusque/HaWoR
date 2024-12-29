@@ -86,6 +86,8 @@ if __name__ == '__main__':
                         [0,  0, -1]]).float()
     R_c2w_sla_all = torch.einsum('ij,njk->nik', R_x, R_c2w_sla_all)
     t_c2w_sla_all = torch.einsum('ij,nj->ni', R_x, t_c2w_sla_all)
+    R_w2c_sla_all = R_c2w_sla_all.transpose(-1, -2)
+    t_w2c_sla_all = -torch.einsum("bij,bj->bi", R_w2c_sla_all, t_c2w_sla_all)
     left_dict['vertices'] = torch.einsum('ij,btnj->btni', R_x, left_dict['vertices'].cpu())
     right_dict['vertices'] = torch.einsum('ij,btnj->btni', R_x, right_dict['vertices'].cpu())
     
