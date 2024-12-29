@@ -179,18 +179,6 @@ def run_vis2_on_video_cam(res_dict, res_dict2, output_pth, focal_length, image_n
         }
         vis_dict[f"hand2_{_id}"] = body_meshes
         color_idx += 1
-    
-    v, f, vc, fc = checkerboard_geometry(length=100, c1=0, c2=0, up="z")
-    v[:, 2] -= 2 # z plane
-    gound_meshes = {
-        "v3d": v,
-        "f3d": f,
-        "vc": vc,
-        "name": "ground",
-        "fc": fc,
-        "color": -1,
-    }
-    vis_dict["ground"] = gound_meshes
 
     meshes = viewer_utils.construct_viewer_meshes(
         vis_dict, draw_edges=False, flat_shading=False
