@@ -28,7 +28,9 @@ if __name__ == '__main__':
 
     frame_chunks_all, img_focal = hawor_motion_estimation(args, start_idx, end_idx, seq_folder)
 
-    hawor_slam(args, start_idx, end_idx)
+    slam_path = os.path.join(seq_folder, f"SLAM/hawor_slam_w_scale_{start_idx}_{end_idx}.npz")
+    if not os.path.exists(slam_path):
+        hawor_slam(args, start_idx, end_idx)
     slam_path = os.path.join(seq_folder, f"SLAM/hawor_slam_w_scale_{start_idx}_{end_idx}.npz")
     R_w2c_sla_all, t_w2c_sla_all, R_c2w_sla_all, t_c2w_sla_all = load_slam_cam(slam_path)
 

@@ -108,6 +108,7 @@ class ARCTICViewer:
         if "video" in self.render_types:
             vid_p = op.join(out_folder, "video.mp4")
             v.save_video(video_dir=vid_p)
+            return 
 
         pbar = tqdm(range(num_iter))
         for fidx in pbar:

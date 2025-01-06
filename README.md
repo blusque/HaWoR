@@ -7,8 +7,11 @@
 <sup>1</sup>Shanghai Jiao Tong University, China
 <sup>2</sup>Imperial College London, UK <br>
 
-<a href='https://hawor-project.github.io/'><img src='https://img.shields.io/badge/Project-Page-blue'></a>
-<a href='https://arxiv.org/abs/'><img src='https://img.shields.io/badge/Paper-arXiv-red'></a>
+<a href=''><img src='https://img.shields.io/badge/Arxiv-arxiv-A42C25?style=flat&logo=arXiv&logoColor=A42C25'></a> 
+<a href=''><img src='https://img.shields.io/badge/Paper-PDF-yellow?style=flat&logo=arXiv&logoColor=yellow'></a> 
+<a href='https://hawor-project.github.io/'><img src='https://img.shields.io/badge/Project-Page-%23df5b46?style=flat&logo=Google%20chrome&logoColor=%23df5b46'></a> 
+<a href='https://github.com/ThunderVVV/HaWoR'><img src='https://img.shields.io/badge/GitHub-Code-black?style=flat&logo=github&logoColor=white'></a> 
+<a href='https://huggingface.co/spaces/ThunderVVV/HaWoR'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-green'></a>
 </div>
 
 This is the official implementation of **[HaWoR](https://hawor-project.github.io/)**, a hand reconstruction model in the world coordinates:

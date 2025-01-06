@@ -65,6 +65,11 @@ def hawor_motion_estimation(args, start_idx, end_idx, seq_folder):
     
     tid = np.array([tr for tr in tracks])
 
+    if os.path.exists(f'{seq_folder}/tracks_{start_idx}_{end_idx}/frame_chunks_all.npy'):
+        print("skip hawor motion estimation")
+        frame_chunks_all = joblib.load(f'{seq_folder}/tracks_{start_idx}_{end_idx}/frame_chunks_all.npy')
+        return frame_chunks_all, img_focal
+
     print(f'Running hawor on {video} ...')
 
     left_trk = []
@@ -211,6 +216,7 @@ def hawor_motion_estimation(args, start_idx, end_idx, seq_folder):
                 
     model_masks = model_masks > 0 # bool
     np.save(f'{seq_folder}/tracks_{start_idx}_{end_idx}/model_masks.npy', model_masks)
+    joblib.dump(frame_chunks_all, f'{seq_folder}/tracks_{start_idx}_{end_idx}/frame_chunks_all.npy')
     return frame_chunks_all, img_focal
 
 def hawor_infiller(args, start_idx, end_idx, frame_chunks_all):

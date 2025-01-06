@@ -36,7 +36,7 @@ def camera_marker_geometry(radius, height):
     return vertices, faces, face_colors
 
 
-def run_vis2_on_video(res_dict, res_dict2, output_pth, focal_length, image_names, R_c2w=None, t_c2w=None):
+def run_vis2_on_video(res_dict, res_dict2, output_pth, focal_length, image_names, R_c2w=None, t_c2w=None, interactive=True):
     
     img0 = cv2.imread(image_names[0])
     height, width, _ = img0.shape
@@ -120,7 +120,7 @@ def run_vis2_on_video(res_dict, res_dict2, output_pth, focal_length, image_names
         vis_dict, draw_edges=False, flat_shading=False
     )
 
-    vis_h, vis_w = (1000, 1000)
+    vis_h, vis_w = (height, width)
     K = np.array(
         [
             [1000, 0, vis_w / 2],
@@ -132,8 +132,15 @@ def run_vis2_on_video(res_dict, res_dict2, output_pth, focal_length, image_names
     data = viewer_utils.ViewerData(viewer_Rt, K, vis_w, vis_h)
     batch = (meshes, data)
 
-    viewer = viewer_utils.ARCTICViewer(interactive=True, size=(vis_w, vis_h))
-    viewer.render_seq(batch, out_folder=os.path.join(output_pth, 'aitviewer'))
+    if interactive:
+        viewer = viewer_utils.ARCTICViewer(interactive=True, size=(vis_w, vis_h))
+        viewer.render_seq(batch, out_folder=os.path.join(output_pth, 'aitviewer'))
+    else:
+        viewer = viewer_utils.ARCTICViewer(interactive=False, size=(vis_w, vis_h), render_types=['video'])
+        if os.path.exists(os.path.join(output_pth, 'aitviewer', "video_0.mp4")):
+            os.remove(os.path.join(output_pth, 'aitviewer', "video_0.mp4"))
+        viewer.render_seq(batch, out_folder=os.path.join(output_pth, 'aitviewer'))
+        return os.path.join(output_pth, 'aitviewer', "video_0.mp4")
 
 def run_vis2_on_video_cam(res_dict, res_dict2, output_pth, focal_length, image_names, R_w2c=None, t_w2c=None):
     

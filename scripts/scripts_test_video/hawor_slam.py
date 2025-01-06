@@ -1,3 +1,4 @@
+import math
 import sys
 import os
 
@@ -119,7 +120,11 @@ def hawor_slam(args, start_idx, end_idx):
         
         # Estimate scene scale
         msk = masks[t].numpy().astype(np.uint8)
-        scale = est_scale_hybrid(slam_depth, pred_depth, sigma=0.5, msk=msk, near_thresh=min_threshold, far_thresh=max_threshold)                    
+        scale = est_scale_hybrid(slam_depth, pred_depth, sigma=0.5, msk=msk, near_thresh=min_threshold, far_thresh=max_threshold)  
+        while math.isnan(scale):
+            min_threshold -= 0.1
+            max_threshold += 0.1
+            scale = est_scale_hybrid(slam_depth, pred_depth, sigma=0.5, msk=msk, near_thresh=min_threshold, far_thresh=max_threshold)                    
         scales_.append(scale)
 
     median_s = np.median(scales_)
