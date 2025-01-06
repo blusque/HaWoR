@@ -2,6 +2,7 @@
 
 /example/video_0
 /weights
+/app_pytorch3d*
 
 .vscode/
 **/.DS_Store
