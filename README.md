@@ -93,5 +93,10 @@ HaWoR models fall under the [CC-BY-NC--ND License](./license.txt). This reposito
 If you find HaWoR useful for your research, please consider citing our paper:
 
 ```bibtex
-
+@article{zhang2025hawor,
+      title={HaWoR: World-Space Hand Motion Reconstruction from Egocentric Videos},
+      author={Zhang, Jinglei and Deng, Jiankang and Ma, Chao and Potamias, Rolandos Alexandros},
+      journal={arXiv preprint arXiv:2501.02973},
+      year={2025}
+    }
 ```
