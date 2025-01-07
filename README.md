@@ -26,7 +26,7 @@ git clone --recursive https://github.com/ThunderVVV/HaWoR.git
 cd HaWoR
 ```
 
-The code has been tested with PyTorch 1.13 and CUDA 11.7. Higher torch and cuda versions are expected to be compatible. It is suggested to use an anaconda environment to install the the required dependencies:
+The code has been tested with PyTorch 1.13 and CUDA 11.7. Higher torch and cuda versions should be also compatible. It is suggested to use an anaconda environment to install the the required dependencies:
 ```bash
 conda create --name hawor python=3.10
 conda activate hawor
