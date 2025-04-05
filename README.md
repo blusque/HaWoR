@@ -7,7 +7,7 @@
 <sup>1</sup>Shanghai Jiao Tong University, China
 <sup>2</sup>Imperial College London, UK <br>
 
-<font color="blue"><strong>CVPR 2025</strong></font> 
+<font color="blue"><strong>CVPR 2025 Highlight✨</strong></font> 
 
 <a href='https://arxiv.org/abs/2501.02973'><img src='https://img.shields.io/badge/Arxiv-2501.02973-A42C25?style=flat&logo=arXiv&logoColor=A42C25'></a> 
 <a href='https://arxiv.org/pdf/2501.02973'><img src='https://img.shields.io/badge/Paper-PDF-yellow?style=flat&logo=arXiv&logoColor=yellow'></a> 
