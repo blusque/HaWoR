@@ -3,6 +3,7 @@
 /example/video_0
 /weights
 /app_pytorch3d*
+*weights
 
 .vscode/
 **/.DS_Store
@@ -72,3 +73,5 @@ ipython_config.py
 
 vis.mp4
 imgui.ini
+
+mano_v1_2/
